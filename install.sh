@@ -46,21 +46,18 @@ install_packages() {
     
     # Paquetes básicos del sistema
     yay -S --needed --noconfirm \
-        hyprland hypridle hyprpaper xdg-desktop-portal-hyprland \
-        kitty alacritty \
+        hyprland-git hypridle-git hyprpaper-git xdg-desktop-portal-hyprland-git \
+        kitty \
         ttf-firacode-nerd nerd-fonts ttf-fira-code \
         waybar rofi thunar \
-        brave-bin firefox \
-        discord telegram-desktop spotify \
-        neovim visual-studio-code-bin \
+        brave-bin \
+        neovim \
         git gh nodejs npm pnpm \
-        docker docker-compose \
         htop btop \
-        gdb \
         zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions \
         fzf zoxide starship \
         eza bat ripgrep fd \
-        pipewire pipewire-pulse pipewire-alsa \
+        pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack \
         brightnessctl light \
         xclip wl-clipboard \
         grim slurp \
@@ -69,12 +66,56 @@ install_packages() {
         bibata-cursor-theme \
         gnome-themes-extra adwaita-icon-theme \
         qt6ct kvantum \
-        obsidian gimp \
-        syncthing \
         bitwarden \
-        figma-linux \
-        steam \
         acpi powertop tlp
+}
+
+# Función para instalar paquetes opcionales
+install_optional_packages() {
+    log "Instalando paquetes opcionales..."
+    
+    echo ""
+    echo "¿Qué paquetes opcionales quieres instalar?"
+    echo "1) Aplicaciones de comunicación (Discord, Telegram)"
+    echo "2) Herramientas de desarrollo (VSCode, Docker, GDB)"
+    echo "3) Multimedia y productividad (Spotify, Obsidian, GIMP, Figma)"
+    echo "4) Aplicaciones adicionales (Steam, Syncthing, Firefox, Alacritty)"
+    echo "5) Todos los anteriores"
+    echo "6) Ninguno (solo paquetes básicos)"
+    echo ""
+    read -p "Selecciona una opción (1-6): " optional_choice
+    
+    case $optional_choice in
+        1|5)
+            log "Instalando aplicaciones de comunicación..."
+            yay -S --needed --noconfirm discord telegram-desktop
+            ;;
+    esac
+    
+    case $optional_choice in
+        2|5)
+            log "Instalando herramientas de desarrollo..."
+            yay -S --needed --noconfirm visual-studio-code-bin docker docker-compose gdb
+            ;;
+    esac
+    
+    case $optional_choice in
+        3|5)
+            log "Instalando multimedia y productividad..."
+            yay -S --needed --noconfirm spotify obsidian gimp figma-linux
+            ;;
+    esac
+    
+    case $optional_choice in
+        4|5)
+            log "Instalando aplicaciones adicionales..."
+            yay -S --needed --noconfirm steam syncthing firefox alacritty
+            ;;
+    esac
+    
+    if [ "$optional_choice" == "6" ]; then
+        log "Saltando paquetes opcionales."
+    fi
 }
 
 # Función para habilitar servicios
@@ -83,7 +124,7 @@ enable_services() {
     
     sudo systemctl enable --now NetworkManager || warn "No se pudo habilitar NetworkManager"
     sudo systemctl enable --now bluetooth || warn "No se pudo habilitar Bluetooth"
-    sudo systemctl enable --now pipewire pipewire-pulse || warn "No se pudo habilitar PipeWire"
+    sudo systemctl enable --now pulseaudio || warn "No se pudo habilitar PulseAudio"
     
     # Para notebooks
     if [ -f "/sys/class/power_supply/BAT0/capacity" ] || [ -f "/sys/class/power_supply/BAT1/capacity" ]; then
@@ -186,16 +227,18 @@ main() {
     echo ""
     echo "¿Qué quieres hacer?"
     echo "1) Instalación completa (recomendado para sistema nuevo)"
-    echo "2) Solo instalar paquetes"
-    echo "3) Solo configurar servicios"
-    echo "4) Solo instalar configuraciones (dotfiles)"
-    echo "5) Salir"
+    echo "2) Solo instalar paquetes básicos"
+    echo "3) Solo instalar paquetes opcionales"
+    echo "4) Solo configurar servicios"
+    echo "5) Solo instalar configuraciones (dotfiles)"
+    echo "6) Salir"
     echo ""
-    read -p "Selecciona una opción (1-5): " choice
+    read -p "Selecciona una opción (1-6): " choice
     
     case $choice in
         1)
             install_packages
+            install_optional_packages
             enable_services
             setup_zsh
             setup_git
@@ -205,17 +248,21 @@ main() {
             ;;
         2)
             install_packages
-            log "Paquetes instalados."
+            log "Paquetes básicos instalados."
             ;;
         3)
+            install_optional_packages
+            log "Paquetes opcionales instalados."
+            ;;
+        4)
             enable_services
             log "Servicios configurados."
             ;;
-        4)
+        5)
             install_configs
             log "Configuraciones instaladas."
             ;;
-        5)
+        6)
             log "Saliendo..."
             exit 0
             ;;

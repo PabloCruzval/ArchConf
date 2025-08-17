@@ -5,7 +5,7 @@
   "modules-right": ["tray","hyprland/language","pulseaudio", "battery"],
 
   "hyprland/workspaces": {
-    "format": "",
+    "format": "",
     "persistent-workspaces":{
       "1": [],
       "2": [],

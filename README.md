@@ -57,10 +57,11 @@ chmod +x install.sh
 ```
 
 El script te permitirá:
-1. **Instalación completa**: Instala todos los paquetes, configura servicios y despliega dotfiles
-2. **Solo paquetes**: Instala únicamente los paquetes necesarios
-3. **Solo servicios**: Configura servicios del sistema
-4. **Solo dotfiles**: Despliega únicamente las configuraciones
+1. **Instalación completa**: Instala todos los paquetes (básicos + opcionales), configura servicios y despliega dotfiles
+2. **Solo paquetes básicos**: Instala únicamente los paquetes esenciales del sistema
+3. **Solo paquetes opcionales**: Instala aplicaciones adicionales según tus necesidades
+4. **Solo servicios**: Configura servicios del sistema
+5. **Solo dotfiles**: Despliega únicamente las configuraciones
 
 ### Instalación Manual
 
@@ -114,32 +115,29 @@ Para una instalación fresca de Arch Linux, instala los siguientes paquetes:
 
 #### Paquetes básicos del sistema
 ```bash
-# Hyprland y componentes del compositor
-yay -S hyprland hypridle hyprpaper xdg-desktop-portal-hyprland
+# Hyprland y componentes del compositor (versiones git para características más recientes)
+yay -S hyprland-git hypridle-git hyprpaper-git xdg-desktop-portal-hyprland-git
 
 # Terminal y fuentes
-yay -S kitty alacritty
+yay -S kitty
 yay -S ttf-firacode-nerd nerd-fonts ttf-fira-code
 
 # Aplicaciones básicas de escritorio
 yay -S waybar rofi thunar
-yay -S brave-bin firefox
-yay -S discord telegram-desktop spotify
+yay -S brave-bin
 
-# Herramientas de desarrollo
-yay -S neovim visual-studio-code-bin
+# Herramientas básicas de desarrollo
+yay -S neovim
 yay -S git gh nodejs npm pnpm
-yay -S docker docker-compose
 yay -S htop btop
-yay -S gdb
 
 # ZSH y herramientas de shell
 yay -S zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 yay -S fzf zoxide starship
 yay -S eza bat ripgrep fd
 
-# Multimedia y utilidades
-yay -S pipewire pipewire-pulse pipewire-alsa
+# Multimedia y utilidades del sistema
+yay -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack
 yay -S brightnessctl light
 yay -S xclip wl-clipboard
 yay -S grim slurp # Screenshots
@@ -151,16 +149,49 @@ yay -S bibata-cursor-theme
 yay -S gnome-themes-extra adwaita-icon-theme
 yay -S qt6ct kvantum
 
-# Aplicaciones adicionales
-yay -S obsidian gimp
-yay -S syncthing
+# Seguridad
 yay -S bitwarden
-yay -S figma-linux
-yay -S steam
 
 # Para notebooks adicionales
 yay -S acpi powertop tlp
 ```
+
+#### Paquetes opcionales
+El script de instalación también permite instalar paquetes opcionales según tus necesidades:
+
+```bash
+# Aplicaciones de comunicación
+yay -S discord telegram-desktop
+
+# Herramientas de desarrollo avanzadas
+yay -S visual-studio-code-bin docker docker-compose gdb
+
+# Multimedia y productividad
+yay -S spotify obsidian gimp figma-linux
+
+# Aplicaciones adicionales
+yay -S steam syncthing firefox alacritty
+```
+
+#### Nota sobre versiones Git
+
+Esta configuración utiliza las versiones git de Hyprland y sus componentes principales:
+- `hyprland-git` - Versión de desarrollo con las últimas características
+- `hypridle-git` - Daemon de idle con correcciones más recientes  
+- `hyprpaper-git` - Manejador de wallpapers con mejor rendimiento
+- `xdg-desktop-portal-hyprland-git` - Portal XDG con soporte mejorado para screen sharing
+
+**Ventajas de usar versiones git:**
+- Acceso a características más recientes
+- Correcciones de errores más rápidas
+- Mejor compatibilidad con aplicaciones modernas
+
+**Consideraciones:**
+- Pueden ser menos estables que las versiones release
+- Compilación puede tomar más tiempo en la instalación
+- Actualizaciones más frecuentes
+
+Si prefieres estabilidad sobre características nuevas, puedes usar las versiones estables cambiando `-git` por los nombres normales en el script de instalación.
 
 #### Configuración post-instalación
 
@@ -168,7 +199,7 @@ yay -S acpi powertop tlp
 # Habilitar servicios necesarios
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
-sudo systemctl enable --now pipewire pipewire-pulse
+sudo systemctl enable --now pulseaudio
 
 # Para notebooks, habilitar gestión de energía
 sudo systemctl enable --now tlp
