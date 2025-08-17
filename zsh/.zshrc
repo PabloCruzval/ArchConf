@@ -68,9 +68,10 @@ alias apagar="shutdown 0"
 alias nv="nvim"
 alias ls='ls -l --color'
 alias py="python"
-alias nob="cd ~/Obsidian/Home/ && nvim /home/nyx/Obsidian/Home/Hubs/1741441427-global-hub.md"
-alias stMode="cd ~/Documentos/Estudio/"
-alias hellwalp="/home/nyx/Plantillas/HellWall/hellwalp.sh"
+
+alias ga="git add"
+alias gc="git commit -m"
+alias gd="git diff-files"
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
