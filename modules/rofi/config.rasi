@@ -1,0 +1,122 @@
+/*
+ * Kanagawa Theme for Rofi
+ * Inspired by rounded-dark theme structure
+ */
+
+configuration {
+    show-icons: true;
+    display-drun: " ";
+    display-window: " ";
+    display-run: " ";
+    display-ssh: " ";
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+}
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+
+    bg: #1f1f28;
+    bg-alt: #1f1f28;
+    fg: #dcd7ba;
+    fg-alt: #727169;
+    
+    background-color: @bg;
+    
+    accent: #ffa066;
+    urgent: #e82424;
+    
+    font: "Fira Code Nerd Font 12";
+}
+
+window {
+    transparency: "real";
+    background-color: @bg;
+    border-radius: 12px;
+    width: 480px;
+    border: 2px;
+    border-color: @bg-alt;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 12px;
+    padding: 12px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 8px;
+    padding: 8px 16px;
+    spacing: 8px;
+    children: [prompt, entry];
+}
+
+prompt {
+    color: @accent;
+    font: "Fira Code Nerd Font Bold 12";
+}
+
+entry {
+    color: @fg;
+    placeholder-color: @fg-alt;
+    placeholder: "Search";
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: false;
+    border: 0;
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 6px;
+    spacing: 8px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.urgent {
+    background-color: @urgent;
+    text-color: @bg;
+}
+
+element normal.active {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @bg;
+}
+
+element selected.active {
+    background-color: @fg-alt;
+    text-color: @bg;
+}
+
+element-icon {
+    size: 1em;
+    color: inherit;
+}
+
+element-text {
+    color: inherit;
+}
