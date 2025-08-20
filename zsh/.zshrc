@@ -69,11 +69,13 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Alias:
 alias install="yay -S"
 alias remove="yay -R"
+alias update="yay -Syu"
 alias apagar="shutdown 0"
 alias nv="nvim"
 alias ls='ls -l --color'
 alias la='ls -la --color'
 alias py="python"
+alias ws="cd ~/Workspace"
 
 # Git
 alias ga='git add'
