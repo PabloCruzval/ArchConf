@@ -142,20 +142,6 @@ return {
 		end,
 	},
 
-	--- Obsidian
-	{
-		"epwalsh/obsidian.nvim",
-		lazy = false,
-		cond = function()
-			local carpeta = vim.fn.getcwd() .. "/.obsidian"
-			return vim.fn.isdirectory(carpeta) == 1
-		end,
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		opts = config.obsidian(),
-	},
 	--- MarkDown
 	{
 		"brianhuster/live-preview.nvim",
@@ -178,7 +164,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig", -- optional
+			"neovim/nvim-lspconfig",   -- optional
 			{
 				"brenoprata10/nvim-highlight-colors",
 				config = function()
