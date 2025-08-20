@@ -7,7 +7,8 @@ fi
 
 # Directory of zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-fpath=($HOME/.config/zsh $fpath)
+fpath=($HOME/completion_zsh $fpath)
+
 
 # Downoad Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -28,15 +29,16 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZP::git
+# zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
-autoload ~/.config/zsh/completion-gh.sh
+autoload ~/.dotfiles/zsh/completion-gh.sh
 autoload -U compinit && compinit
 
 zinit cdreplay -q
+
 
 clipcat(){
   cat "$1" | xclip -selection clipboard
@@ -61,20 +63,28 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+# Colorscheme
+
+
 # Alias:
 alias install="yay -S"
 alias remove="yay -R"
 alias apagar="shutdown 0"
 alias nv="nvim"
 alias ls='ls -l --color'
+alias la='ls -la --color'
 alias py="python"
 
-alias ga="git add"
-alias gc="git commit -m"
-alias gd="git diff-files"
+# Git
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+
+
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
 
 # Export
 export EDITOR='code'
