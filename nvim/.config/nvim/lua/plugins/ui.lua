@@ -1,15 +1,6 @@
 local config = require("plugins.configs")
 
 return {
-	{
-		--  Startup menu
-		-- "goolord/alpha-nvim",
-		-- -- lazy = false,
-		-- dependencies = { "DaikyXendo/nvim-material-icon" },
-		-- config = function()
-		-- 	config.alpha()
-		-- end,
-	},
 	-- Theme
 	{
 		"rebelot/kanagawa.nvim",

@@ -142,41 +142,6 @@ local treesitter = function()
 	})
 end
 
---- Alpha
-local alpha = function()
-	local alpha_dashboards_headers = require("dashboards")
-	local alpha = require("alpha")
-	local dashboard = require("alpha.themes.dashboard")
-
-	local function alpha_format_text(text)
-		return {
-			type = "text",
-			val = text,
-			opts = { hl = "NvimDashColor", shrink_margin = false, position = "center" },
-		}
-	end
-
-	local function format_text(text)
-		local formated_text = {}
-		for _, line in ipairs(text) do
-			table.insert(formated_text, alpha_format_text(line))
-		end
-		return formated_text
-	end
-
-	dashboard.section.header.type = "group"
-	dashboard.section.header.val = format_text(alpha_dashboards_headers)
-
-	dashboard.section.buttons.val = {
-		dashboard.button("e", "  New File", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("f", "  Find File", "<cmd> Telescope find_files <CR>"),
-		dashboard.button("r", "  Recently Opened Files", ":Telescope oldfiles<CR>"),
-		dashboard.button("q", "󰩈  Exit", ":qa<CR>"),
-	}
-
-	alpha.setup(dashboard.opts)
-end
-
 --- Telescope
 local telescope_ui_select = function()
 	require("telescope").setup({
@@ -289,7 +254,6 @@ return {
 	treesitter = treesitter,
 	telescope_ui_select = telescope_ui_select,
 	lualine = lualine,
-	alpha = alpha,
 	neotree = neotree,
 	conform = conform,
 	ibl = ibl,
