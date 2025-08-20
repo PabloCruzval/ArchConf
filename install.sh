@@ -48,7 +48,7 @@ install_packages() {
     yay -S --needed --noconfirm \
         hyprland-git hypridle-git hyprpaper-git xdg-desktop-portal-hyprland-git \
         kitty \
-        ttf-firacode-nerd ttf-fira-code noto-fonts-emoji noto-fonts \
+        ttf-firacode-nerd ttf-fira-code ttf-ubuntu-nerd noto-fonts-emoji noto-fonts \
         quickshell-git rofi thunar \
         brave-bin \
         neovim \

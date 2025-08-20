@@ -53,19 +53,26 @@
   },
 
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-muted": "󰝟",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
+     "scroll-step": 5, // %, can be a float
+     "reverse-scrolling": 1,
+     "format": "{volume}% {icon} {format_source}",
+     "format-bluetooth": "{volume}% {icon} {format_source}",
+     "format-bluetooth-muted": "  {icon} {format_source}",
+     "format-muted": "  {format_source}",
+     "format-source": "{volume}% ",
+     "format-source-muted": "",
+     "format-icons": {
+        "headphone": "",
+        "hands-free": "󱥋 ",
+       "headset": "󰋎 ",
+       "phone": "",
+       "portable": "", 
+       "car": "",
+       "default": [" ", "  ", " "]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-middle": "pavucontrol",
+    "min-length": 13
   },
 
   "clock": {
