@@ -49,7 +49,7 @@ install_packages() {
         hyprland-git hypridle-git hyprpaper-git xdg-desktop-portal-hyprland-git \
         kitty \
         ttf-firacode-nerd nerd-fonts ttf-fira-code \
-        waybar rofi thunar \
+        quickshell-git rofi thunar \
         brave-bin \
         neovim \
         git gh nodejs npm pnpm \
@@ -169,11 +169,13 @@ install_configs() {
     
     # Configuraciones básicas
     stow kitty
-    stow waybar
+    stow quickshell
     stow rofi
     stow zsh
     stow hyprpaper
     stow wallpapers
+    
+    log "QuickShell configurado como barra principal"
     
     # Preguntar por configuración de Hyprland
     echo ""
