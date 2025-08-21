@@ -57,7 +57,7 @@ install_packages() {
         zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions \
         fzf zoxide starship \
         eza bat ripgrep fd \
-        pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack \
+        pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack blueman\
         brightnessctl light \
         xclip wl-clipboard \
         grim slurp \
