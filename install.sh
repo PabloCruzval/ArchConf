@@ -52,7 +52,7 @@ install_packages() {
         quickshell-git rofi thunar \
         brave-bin \
         neovim \
-        git gh nodejs npm pnpm \
+        git gh nodejs npm pnpm bun\
         htop btop \
         zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions \
         fzf zoxide starship \
