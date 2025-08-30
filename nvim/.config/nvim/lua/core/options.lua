@@ -8,14 +8,14 @@ vim.g.maplocalleader = " "
 --- Left numbers
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.numberwidth = 2 -- Ancho de la columna de numeros.
-vim.o.conceallevel = 2 -- Oculta parcialmente ciertos caracteres en los archivos.
+vim.o.numberwidth = 2             -- Ancho de la columna de numeros.
+vim.o.conceallevel = 2            -- Oculta parcialmente ciertos caracteres en los archivos.
 vim.opt.fillchars = { eob = " " } -- Remueve los ~ de la columna.
 
 --- Tabs
-vim.o.tabstop = 3
-vim.o.softtabstop = 3
-vim.o.shiftwidth = 3
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 
 --- Set theme
 vim.cmd([[colorscheme kanagawa]])
