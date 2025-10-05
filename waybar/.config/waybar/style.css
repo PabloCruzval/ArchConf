@@ -6,23 +6,23 @@
     min-height: 0;
 }
 
-window#waybar {
-    background: #131B2D;
-    color: #c0cbe5;
-    border-radius: 12px;
-    margin: 8px;
-    padding: 0 16px;
-}
-
 #workspaces {
-    background: #16161d;
+    background: transparent;
     border-radius: 8px;
     padding: 4px 8px;
     margin: 4px;
 }
 
+window#waybar {
+    background: #1c1036;
+    color: #FFD1E3;
+    border-radius: 12px;
+    margin: 8px;
+    padding: 0 16px;
+}
+
 #workspaces button {
-    color: #54546d;
+    color: #A367B1;
     background: transparent;
     border-radius: 6px;
     padding: 2px 8px;
@@ -31,61 +31,61 @@ window#waybar {
 }
 
 #workspaces button.empty {
-    color: #202029;
+    color: #5D3587;
     background: transparent;
 }
 
 #workspaces button:hover {
-    color: #7e9cd8;
-    background: #2a2a37;
+    color: #FFD1E3;
+    background: rgba(163, 103, 177, 0.3);
 }
 
 #workspaces button.active {
-    color: #ffa066;
-    background: #2d2a2e;
+    color: #FFD1E3;
+    background: rgba(163, 103, 177, 0.5);
 }
 
 #language {
-    background: #16161d;
-    color: #7aa89f;
+    background: transparent;
+    color: #FFD1E3;
     padding: 4px 12px;
     margin: 4px;
     border-radius: 8px;
 }
 
 #window {
-    color: #c8c093;
+    color: #FFD1E3;
     font-weight: 500;
     padding: 0 16px;
 }
 
 #tray {
-    background: #16161d;
+    background: transparent;
     border-radius: 8px;
     padding: 4px 8px;
     margin: 4px;
 }
 
 #tray menu {
-    background: #1f1f28;
-    border: 1px solid #54546d;
+    background: #392467;
+    border: 1px solid #5D3587;
 }
 
 #pulseaudio {
-    background: #16161d;
-    color: #7e9cd8;
+    background: transparent;
+    color: #FFD1E3;
     padding: 4px 12px;
     margin: 4px;
     border-radius: 8px;
 }
 
 #pulseaudio.muted {
-    color: #c34043;
+    color: #A367B1;
 }
 
 #clock {
-    background: #16161d;
-    color: #e6c384;
+    background: transparent;
+    color: #FFD1E3;
     padding: 4px 12px;
     margin: 4px;
     border-radius: 8px;
@@ -93,28 +93,28 @@ window#waybar {
 }
 
 #battery {
-    background: #16161d;
-    color: #7e9cd8;
+    background: transparent;
+    color: #FFD1E3;
     padding: 4px 12px;
     margin: 4px;
     border-radius: 8px;
 }
 
 #battery.charging {
-    color: #98bb6c;
+    color: #A367B1;
 }
 
 #battery.critical {
-    color: #e82424;
+    color: #FFD1E3;
 }
 
 #battery.warning {
-    color: #ff9e3b;
+    color: #A367B1;
 }
 
 #network {
-    background: #16161d;
-    color: #7aa89f;
+    background: transparent;
+    color: #FFD1E3;
     padding: 4px 12px;
     margin: 4px;
     border-radius: 8px;
