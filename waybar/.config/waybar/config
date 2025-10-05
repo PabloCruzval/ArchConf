@@ -2,7 +2,7 @@
   "margin": "5 5 0 5",
   "modules-left": ["hyprland/workspaces","clock"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["tray","hyprland/language","pulseaudio", "battery"],
+  "modules-right": ["tray","hyprland/language","pulseaudio","network","battery"],
 
   "hyprland/workspaces": {
     "format": "",
@@ -45,15 +45,24 @@
   },
 
   "network": {
-    "format-wifi": "󰤨 {signalStrength}%",
-    "format-ethernet": "󰈀 Connected",
+    "format-wifi": "󰤨  {bandwidthDownBytes} ️ {bandwidthUpBytes}",
+    "format-ethernet": "󰈀  {bandwidthDownBytes} ️ {bandwidthUpBytes}",
+    "format-linked": "󰈀 No Connection",
     "format-disconnected": "󰤭 Disconnected",
-    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-    "on-click": "nmtui"
+    "format-alt": "󰤨 {essid} - {ipaddr}",
+    "tooltip-format": "󰤨 {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "󰤨 {essid} ({signalStrength}%)\n📡 {frequency}MHz\n🌐 {ipaddr}/{cidr}\n🚪 Gateway: {gwaddr}",
+    "tooltip-format-ethernet": "󰈀 {ifname}\n🌐 {ipaddr}/{cidr}\n🚪 Gateway: {gwaddr}",
+    "tooltip-format-disconnected": "󰤭 Network Disconnected",
+    "interval": 2,
+    "max-length": 40,
+    "on-click": "nmtui",
+    "on-click-right": "nm-connection-editor",
+    "on-click-middle": "wifi-menu"
   },
 
   "pulseaudio": {
-     "scroll-step": 5, // %, can be a float
+     "scroll-step": 5,
      "reverse-scrolling": 1,
      "format": "{volume}% {icon} {format_source}",
      "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -76,8 +85,8 @@
   },
 
   "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%A, %B %d, %Y (%R)}",
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
