@@ -1,5 +1,5 @@
 {
-  "margin": "5 5 0 5",
+  "margin": "0",
   "modules-left": ["hyprland/workspaces","clock"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["tray","hyprland/language","pulseaudio","network","battery"],
@@ -85,7 +85,7 @@
   },
 
   "clock": {
-    "format": "{:%H:%M}  ",
+    "format": "{:%I:%M  %p}",
     "format-alt": "{:%A, %B %d, %Y (%R)}  ",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
