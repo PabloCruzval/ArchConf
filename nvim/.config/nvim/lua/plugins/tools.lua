@@ -29,6 +29,7 @@ return {
 	--- Autocomplete
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		lazy = false,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -164,7 +165,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig",   -- optional
+			"neovim/nvim-lspconfig", -- optional
 			{
 				"brenoprata10/nvim-highlight-colors",
 				config = function()
