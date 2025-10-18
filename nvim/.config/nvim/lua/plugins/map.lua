@@ -39,3 +39,28 @@ map(
 
 --- nvim-surround
 map("n", "<leader>s(", "ysiw(", { noremap = false, desc = "Surround: Inner Word" })
+
+--- ToggleTerm
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "ToggleTerm: Float" })
+map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm: Horizontal" })
+map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=80<CR>", { desc = "ToggleTerm: Vertical" })
+
+-- Mapeos en modo terminal para salir más fácilmente
+map("t", "<esc>", [[<C-\><C-n>]], { desc = "ToggleTerm: Exit terminal mode" })
+map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], { desc = "ToggleTerm: Move left" })
+map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], { desc = "ToggleTerm: Move down" })
+map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "ToggleTerm: Move up" })
+map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "ToggleTerm: Move right" })
+
+--- Neotest
+map("n", "<leader>ntn", '<cmd>lua require("neotest").run.run()<CR>', { desc = "Neotest: Run Nearest Test" })
+map("n", "<leader>ntf", '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { desc = "Neotest: Run File" })
+map("n", "<leader>ntd", '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', { desc = "Neotest: Debug Nearest Test" })
+map("n", "<leader>nts", '<cmd>lua require("neotest").run.stop()<CR>', { desc = "Neotest: Stop Test" })
+map("n", "<leader>nta", '<cmd>lua require("neotest").run.attach()<CR>', { desc = "Neotest: Attach to Test" })
+map("n", "<leader>nto", '<cmd>lua require("neotest").output.open({ enter = true })<CR>', { desc = "Neotest: Show Output" })
+map("n", "<leader>ntO", '<cmd>lua require("neotest").output_panel.toggle()<CR>', { desc = "Neotest: Toggle Output Panel" })
+map("n", "<leader>ntS", '<cmd>lua require("neotest").summary.toggle()<CR>', { desc = "Neotest: Toggle Summary" })
+map("n", "<leader>ntl", '<cmd>lua require("neotest").run.run_last()<CR>', { desc = "Neotest: Run Last Test" })
+map("n", "<leader>ntL", '<cmd>lua require("neotest").run.run_last({strategy = "dap"})<CR>', { desc = "Neotest: Debug Last Test" })
+

@@ -71,7 +71,7 @@ local none_ls = function()
 		sources = {
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettier,
-			require("none-ls.diagnostics.eslint"),
+			-- require("none-ls.diagnostics.eslint"),
 		},
 	})
 end
@@ -245,6 +245,116 @@ local gits = function()
 	})
 end
 
+--- ToggleTerm
+local toggleterm = function()
+	require("toggleterm").setup({
+		size = 20,
+		open_mapping = [[<c-\>]],
+		hide_numbers = true,
+		shade_filetypes = {},
+		shade_terminals = true,
+		shading_factor = 2,
+		start_in_insert = true,
+		insert_mappings = true,
+		persist_size = true,
+		direction = "float",
+		close_on_exit = true,
+		shell = vim.o.shell,
+		float_opts = {
+			border = "curved",
+			winblend = 0,
+			highlights = {
+				border = "Normal",
+				background = "Normal",
+			},
+		},
+	})
+end
+
+--- Neotest
+local neotest = function()
+	-- Función simple para encontrar el intérprete de Python
+	local function get_python_path()
+		local cwd = vim.fn.getcwd()
+		
+		-- 1. Buscar archivo .nvim-python en el proyecto
+		local nvim_python_file = cwd .. "/.nvim-python"
+		if vim.fn.filereadable(nvim_python_file) == 1 then
+			local python_path = vim.fn.readfile(nvim_python_file)[1]
+			if python_path and vim.fn.executable(python_path) == 1 then
+				return python_path
+			end
+		end
+		
+		-- 2. Buscar entorno virtual en el proyecto
+		local venv_paths = {
+			cwd .. "/.venv/bin/python",
+			cwd .. "/venv/bin/python",
+			cwd .. "/env/bin/python",
+		}
+		
+		for _, path in ipairs(venv_paths) do
+			if vim.fn.executable(path) == 1 then
+				return path
+			end
+		end
+		
+		-- 3. Fallback a python3 del sistema
+		if vim.fn.executable("python3") == 1 then
+			return "python3"
+		end
+		
+		return "python"
+	end
+
+	require("neotest").setup({
+		adapters = {
+			require("neotest-python")({
+				-- Configuración específica para Python
+				dap = { justMyCode = false },
+				args = { "-v" },
+				runner = "unittest",
+				python = get_python_path,
+			}),
+			require("neotest-jest")({
+				jestCommand = "npm test --",
+				jestConfigFile = "custom.jest.config.ts",
+				env = { CI = true },
+				cwd = function(path)
+					return vim.fn.getcwd()
+				end,
+			}),
+			require("neotest-go"),
+		},
+		-- Configuración general
+		quickfix = {
+			enabled = true,
+			open = false,
+		},
+		status = {
+			enabled = true,
+			virtual_text = true,
+			signs = true,
+		},
+		output = {
+			enabled = true,
+			open_on_run = "short",
+		},
+		run = {
+			enabled = true,
+		},
+		summary = {
+			enabled = true,
+			animated = true,
+			follow = true,
+			expand_errors = true,
+		},
+		icons = {
+			running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+		},
+	})
+end
+
 return {
 	mason = mason,
 	mason_lspconfig = mason_lspconfig,
@@ -258,4 +368,6 @@ return {
 	conform = conform,
 	ibl = ibl,
 	gits = gits,
+	toggleterm = toggleterm,
+	neotest = neotest,
 }

@@ -21,3 +21,9 @@ map('n', '<leader>bp', ":bprevious<CR>", { desc = "Buffer: Previous" })
 
 --- Speell
 map('n', '<leader>sc', "z=1<Enter><CR>", { desc = "Correct spell" })
+
+--- Window Navigation
+map('n', '<C-h>', '<C-w>h', { desc = "Move to left window" })
+map('n', '<C-j>', '<C-w>j', { desc = "Move to window below" })
+map('n', '<C-k>', '<C-w>k', { desc = "Move to window above" })
+map('n', '<C-l>', '<C-w>l', { desc = "Move to right window" })
