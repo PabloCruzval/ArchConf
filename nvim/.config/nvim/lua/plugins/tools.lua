@@ -142,6 +142,13 @@ return {
 			config.neotree()
 		end,
 	},
+	-- {
+	-- 	"wuelnerdotexe/vim-astro",
+	-- 	ft = { "astro" },
+	-- 	config = function()
+	-- 		require("vim-astro").setup()
+	-- 	end
+	-- },
 
 	--- MarkDown
 	{
@@ -179,7 +186,7 @@ return {
 	--- Terminal
 	{
 		"akinsho/toggleterm.nvim",
-		event = {"BufAdd", "BufNewFile"},
+		event = { "BufAdd", "BufNewFile" },
 		config = function()
 			config.toggleterm()
 		end,
