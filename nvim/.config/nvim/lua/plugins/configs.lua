@@ -6,7 +6,7 @@ end
 local mason_lspconfig = function()
 	-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls" },
+		ensure_installed = { "lua_ls", "prettier", "pyright" },
 		automatic_enable = true,
 	})
 end
@@ -95,6 +95,7 @@ local conform = function()
 			liquid = { "prettier" },
 			lua = { "stylua" },
 			python = { "isort", "black", "autopep8" },
+			astro = { "prettier" },
 		},
 		format_on_save = {
 			lsp_fallback = true,
@@ -276,7 +277,7 @@ local neotest = function()
 	-- Función simple para encontrar el intérprete de Python
 	local function get_python_path()
 		local cwd = vim.fn.getcwd()
-		
+
 		-- 1. Buscar archivo .nvim-python en el proyecto
 		local nvim_python_file = cwd .. "/.nvim-python"
 		if vim.fn.filereadable(nvim_python_file) == 1 then
@@ -285,25 +286,25 @@ local neotest = function()
 				return python_path
 			end
 		end
-		
+
 		-- 2. Buscar entorno virtual en el proyecto
 		local venv_paths = {
 			cwd .. "/.venv/bin/python",
 			cwd .. "/venv/bin/python",
 			cwd .. "/env/bin/python",
 		}
-		
+
 		for _, path in ipairs(venv_paths) do
 			if vim.fn.executable(path) == 1 then
 				return path
 			end
 		end
-		
+
 		-- 3. Fallback a python3 del sistema
 		if vim.fn.executable("python3") == 1 then
 			return "python3"
 		end
-		
+
 		return "python"
 	end
 

@@ -48,4 +48,11 @@ return {
 			config.gits()
 		end,
 	},
+	{
+		"themaxmarchuk/tailwindcss-colors.nvim",
+		tf = { "astro" },
+		init = function()
+			require("tailwindcss-colors").setup()
+		end,
+	},
 }

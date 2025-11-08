@@ -55,12 +55,34 @@ map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "ToggleTerm: Move right" })
 --- Neotest
 map("n", "<leader>ntn", '<cmd>lua require("neotest").run.run()<CR>', { desc = "Neotest: Run Nearest Test" })
 map("n", "<leader>ntf", '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { desc = "Neotest: Run File" })
-map("n", "<leader>ntd", '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', { desc = "Neotest: Debug Nearest Test" })
+map(
+	"n",
+	"<leader>ntd",
+	'<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',
+	{ desc = "Neotest: Debug Nearest Test" }
+)
 map("n", "<leader>nts", '<cmd>lua require("neotest").run.stop()<CR>', { desc = "Neotest: Stop Test" })
 map("n", "<leader>nta", '<cmd>lua require("neotest").run.attach()<CR>', { desc = "Neotest: Attach to Test" })
-map("n", "<leader>nto", '<cmd>lua require("neotest").output.open({ enter = true })<CR>', { desc = "Neotest: Show Output" })
-map("n", "<leader>ntO", '<cmd>lua require("neotest").output_panel.toggle()<CR>', { desc = "Neotest: Toggle Output Panel" })
+map(
+	"n",
+	"<leader>nto",
+	'<cmd>lua require("neotest").output.open({ enter = true })<CR>',
+	{ desc = "Neotest: Show Output" }
+)
+map(
+	"n",
+	"<leader>ntO",
+	'<cmd>lua require("neotest").output_panel.toggle()<CR>',
+	{ desc = "Neotest: Toggle Output Panel" }
+)
 map("n", "<leader>ntS", '<cmd>lua require("neotest").summary.toggle()<CR>', { desc = "Neotest: Toggle Summary" })
 map("n", "<leader>ntl", '<cmd>lua require("neotest").run.run_last()<CR>', { desc = "Neotest: Run Last Test" })
-map("n", "<leader>ntL", '<cmd>lua require("neotest").run.run_last({strategy = "dap"})<CR>', { desc = "Neotest: Debug Last Test" })
+map(
+	"n",
+	"<leader>ntL",
+	'<cmd>lua require("neotest").run.run_last({strategy = "dap"})<CR>',
+	{ desc = "Neotest: Debug Last Test" }
+)
 
+--- Copilot
+map("n", "<leader>cc", "<cmd>CopilotChatToggle<CR>", { desc = "Copilot: Open Chat" })

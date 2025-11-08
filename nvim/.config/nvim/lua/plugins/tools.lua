@@ -4,6 +4,10 @@ return {
 	--- IA
 	{
 		"github/copilot.vim",
+		dependencies = {
+			{ "CopilotC-Nvim/CopilotChat.nvim", opts = { model = "claude-sonnet-4" } },
+			"nvim-lua/plenary.nvim",
+		},
 	},
 	--- LSP & Mason
 	{
