@@ -10,7 +10,8 @@ map({ "n", "v" }, "<leader>tt", "<cmd> Telescope live_grep <CR>", { desc = "Tele
 
 --- LSP
 map("n", "<leader>lh", vim.lsp.buf.hover, { desc = "LSP: Hover" })
-map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "LSP: Diagnostic" })
+map("n", "<leader>lD", vim.diagnostic.open_float, { desc = "LSP: Diagnostic" })
+map("n", "<leader>ld", vim.lsp.buf.definition, { desc = "LSP: Go to Definition" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP: Rename" })
 
